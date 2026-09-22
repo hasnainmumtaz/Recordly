@@ -346,6 +346,10 @@ export function validateProjectData(candidate: unknown): candidate is EditorProj
 	return true;
 }
 
+/**
+ * Normalizes persisted editor data, supplies current defaults, and migrates
+ * legacy caption bottom offsets into percentage-based X/Y positions.
+ */
 export function normalizeProjectEditor(editor: Partial<ProjectEditorState>): ProjectEditorState {
 	const validAspectRatios = new Set<AspectRatio>(ASPECT_RATIOS);
 	const legacyMotionBlurEnabled = (editor as Partial<{ motionBlurEnabled: boolean }>)

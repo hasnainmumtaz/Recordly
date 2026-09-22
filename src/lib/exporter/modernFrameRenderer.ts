@@ -1587,6 +1587,10 @@ export class FrameRenderer {
 		);
 	}
 
+	/**
+	 * Resolves the active caption into pixel-space geometry and visual state for
+	 * the current export frame, shared by sprite rasterization and positioning.
+	 */
 	private buildCaptionRenderState(timeMs: number): CaptionRenderState | null {
 		const settings = this.config.autoCaptionSettings;
 		const cues = this.config.autoCaptions;

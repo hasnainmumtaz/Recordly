@@ -299,6 +299,10 @@ export interface VideoPlaybackRef {
 	cancelCaptionEdit: () => void;
 }
 
+/**
+ * Renders the interactive editor preview and keeps caption layout synchronized
+ * with the current preview viewport so it matches full-resolution export.
+ */
 const VideoPlayback = forwardRef<VideoPlaybackRef, VideoPlaybackProps>(
 	(
 		{

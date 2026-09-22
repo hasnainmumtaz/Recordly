@@ -864,6 +864,10 @@ function CursorStylePreview({
 	);
 }
 
+/**
+ * Renders editor controls and applies user changes to the active recording,
+ * including percentage-based horizontal and vertical caption positioning.
+ */
 export function SettingsPanel({
 	advanced = false,
 	panelMode = "editor",
