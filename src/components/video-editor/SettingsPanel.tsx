@@ -2482,7 +2482,7 @@ export function SettingsPanel({
 					{tSettings("captions.position", "Position")}
 				</div>
 				<SliderControl
-					label={tSettings("captions.positionX", "X position")}
+					label={tSettings("captions.positionX", "Horizontal position")}
 					value={autoCaptionSettings.positionX}
 					defaultValue={DEFAULT_AUTO_CAPTION_SETTINGS.positionX}
 					min={0}
@@ -2493,7 +2493,7 @@ export function SettingsPanel({
 					parseInput={(text) => parseFloat(text.replace(/%$/, ""))}
 				/>
 				<SliderControl
-					label={tSettings("captions.positionY", "Y position")}
+					label={tSettings("captions.positionY", "Vertical position")}
 					value={autoCaptionSettings.positionY}
 					defaultValue={DEFAULT_AUTO_CAPTION_SETTINGS.positionY}
 					min={0}
