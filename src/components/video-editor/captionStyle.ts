@@ -6,10 +6,19 @@ export const CAPTION_LINE_HEIGHT = 1.32;
 
 const DEFAULT_CAPTION_REFERENCE_WIDTH = 1920;
 
+/** Converts the configured maximum-width percentage into pixels for a frame or preview. */
 export function getCaptionTargetWidth(containerWidth: number, maxWidthPercent: number) {
 	return Math.max(1, containerWidth * (maxWidthPercent / 100));
 }
 
+/**
+ * Scales the authored caption font size from the 1920px reference canvas to the
+ * current frame width. Width constraints are intentionally excluded so changing
+ * max width affects wrapping without changing the apparent type size.
+ *
+ * `_maxWidthPercent` remains in the signature for compatibility with existing
+ * preview and export call sites.
+ */
 export function getCaptionScaledFontSize(
 	fontSize: number,
 	containerWidth: number,
@@ -18,6 +27,7 @@ export function getCaptionScaledFontSize(
 	return Math.max(1, fontSize * (containerWidth / DEFAULT_CAPTION_REFERENCE_WIDTH));
 }
 
+/** Returns horizontal and vertical caption-box padding proportional to the rendered font size. */
 export function getCaptionPadding(fontSize: number) {
 	return {
 		x: fontSize * 1.1,
@@ -25,11 +35,13 @@ export function getCaptionPadding(fontSize: number) {
 	};
 }
 
+/** Scales a configured corner radius in step with the rendered caption font size. */
 export function getCaptionScaledRadius(radius: number, fontSize: number) {
 	const baseline = Math.max(1, DEFAULT_AUTO_CAPTION_SETTINGS.fontSize);
 	return Math.max(0, radius * (fontSize / baseline));
 }
 
+/** Returns the usable text width after subtracting caption-box padding. */
 export function getCaptionTextMaxWidth(
 	containerWidth: number,
 	maxWidthPercent: number,
@@ -42,6 +54,11 @@ export function getCaptionTextMaxWidth(
 	);
 }
 
+/**
+ * Converts percentage-based caption settings into the pixel-space center point
+ * used by canvas and Pixi renderers. `positionY` describes the box's bottom edge,
+ * so half the measured box height is subtracted to obtain its center.
+ */
 export function getCaptionAnchorPosition(
 	settings: Pick<AutoCaptionSettings, "positionX" | "positionY">,
 	frameWidth: number,

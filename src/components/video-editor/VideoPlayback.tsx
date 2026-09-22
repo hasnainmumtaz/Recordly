@@ -393,6 +393,7 @@ const VideoPlayback = forwardRef<VideoPlaybackRef, VideoPlaybackProps>(
 		const videoReady = usePreviewVideoReady(videoRef, videoPath);
 
 		const [previewViewportWidth, setPreviewViewportWidth] = useState(640);
+		// Keep caption measurement reactive so preview wrapping matches export after resizing.
 		const captionViewportWidth = Math.max(1, previewViewportWidth);
 		const [annotationSceneTransform, setAnnotationSceneTransform] =
 			useState<SceneTransformState>({

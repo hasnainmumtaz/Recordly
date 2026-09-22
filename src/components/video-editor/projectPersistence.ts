@@ -762,6 +762,7 @@ export function normalizeProjectEditor(editor: Partial<ProjectEditorState>): Pro
 		positionX: isFiniteNumber(rawAutoCaptionSettings.positionX)
 			? clamp(rawAutoCaptionSettings.positionX, 0, 100)
 			: DEFAULT_AUTO_CAPTION_SETTINGS.positionX,
+		// Legacy projects stored distance from the bottom rather than a top-origin position.
 		positionY: isFiniteNumber(rawAutoCaptionSettings.positionY)
 			? clamp(rawAutoCaptionSettings.positionY, 0, 100)
 			: isFiniteNumber(rawAutoCaptionSettings.bottomOffset)
