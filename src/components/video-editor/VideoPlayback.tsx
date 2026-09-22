@@ -2492,10 +2492,11 @@ const VideoPlayback = forwardRef<VideoPlaybackRef, VideoPlaybackProps>(
 						) : null}
 						{!isGap && activeCaptionLayout && autoCaptionSettings ? (
 							<div
-								className="absolute inset-x-0 flex justify-center"
+								className="absolute flex w-full justify-center"
 								style={{
+									left: `${autoCaptionSettings.positionX}%`,
 									bottom: `${100 - autoCaptionSettings.positionY}%`,
-									transform: `translateX(${autoCaptionSettings.positionX - 50}%)`,
+									transform: "translateX(-50%)",
 									pointerEvents: onEditAutoCaption ? "auto" : "none",
 								}}
 							>
