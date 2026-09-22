@@ -1,5 +1,5 @@
 import type { CaptionWordState } from "./captionLayout";
-import { DEFAULT_AUTO_CAPTION_SETTINGS } from "./types";
+import { type AutoCaptionSettings, DEFAULT_AUTO_CAPTION_SETTINGS } from "./types";
 
 export const CAPTION_FONT_WEIGHT = 400;
 export const CAPTION_LINE_HEIGHT = 1.32;
@@ -45,6 +45,18 @@ export function getCaptionTextMaxWidth(
 		fontSize * 4,
 		getCaptionTargetWidth(containerWidth, maxWidthPercent) - padding.x * 2,
 	);
+}
+
+export function getCaptionAnchorPosition(
+	settings: Pick<AutoCaptionSettings, "positionX" | "positionY">,
+	frameWidth: number,
+	frameHeight: number,
+	boxHeight: number,
+) {
+	return {
+		x: (frameWidth * settings.positionX) / 100,
+		y: (frameHeight * settings.positionY) / 100 - boxHeight / 2,
+	};
 }
 
 export function getCaptionWordVisualState(_hasWordTimings: boolean, _state: CaptionWordState) {

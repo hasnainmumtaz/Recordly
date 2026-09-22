@@ -740,9 +740,14 @@ export function normalizeProjectEditor(editor: Partial<ProjectEditorState>): Pro
 		fontSize: isFiniteNumber(rawAutoCaptionSettings.fontSize)
 			? clamp(rawAutoCaptionSettings.fontSize, 16, 72)
 			: DEFAULT_AUTO_CAPTION_SETTINGS.fontSize,
-		bottomOffset: isFiniteNumber(rawAutoCaptionSettings.bottomOffset)
-			? clamp(rawAutoCaptionSettings.bottomOffset, 0, 30)
-			: DEFAULT_AUTO_CAPTION_SETTINGS.bottomOffset,
+		positionX: isFiniteNumber(rawAutoCaptionSettings.positionX)
+			? clamp(rawAutoCaptionSettings.positionX, 0, 100)
+			: DEFAULT_AUTO_CAPTION_SETTINGS.positionX,
+		positionY: isFiniteNumber(rawAutoCaptionSettings.positionY)
+			? clamp(rawAutoCaptionSettings.positionY, 0, 100)
+			: isFiniteNumber(rawAutoCaptionSettings.bottomOffset)
+				? clamp(100 - rawAutoCaptionSettings.bottomOffset, 0, 100)
+				: DEFAULT_AUTO_CAPTION_SETTINGS.positionY,
 		maxWidth: isFiniteNumber(rawAutoCaptionSettings.maxWidth)
 			? clamp(rawAutoCaptionSettings.maxWidth, 40, 95)
 			: DEFAULT_AUTO_CAPTION_SETTINGS.maxWidth,

@@ -2452,7 +2452,8 @@ const VideoPlayback = forwardRef<VideoPlaybackRef, VideoPlaybackProps>(
 							<div
 								className="absolute inset-x-0 flex justify-center"
 								style={{
-									bottom: `${autoCaptionSettings.bottomOffset}%`,
+									bottom: `${100 - autoCaptionSettings.positionY}%`,
+									transform: `translateX(${autoCaptionSettings.positionX - 50}%)`,
 									pointerEvents: onEditAutoCaption ? "auto" : "none",
 								}}
 							>

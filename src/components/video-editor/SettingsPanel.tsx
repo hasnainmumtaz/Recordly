@@ -2478,14 +2478,28 @@ export function SettingsPanel({
 					formatValue={(value) => `${Math.round(value)}`}
 					parseInput={(text) => parseFloat(text)}
 				/>
+				<div className="mb-1 mt-2 text-sm font-medium text-foreground">
+					{tSettings("captions.position", "Position")}
+				</div>
 				<SliderControl
-					label={tSettings("captions.bottomOffset", "Bottom offset")}
-					value={autoCaptionSettings.bottomOffset}
-					defaultValue={DEFAULT_AUTO_CAPTION_SETTINGS.bottomOffset}
+					label={tSettings("captions.positionX", "X position")}
+					value={autoCaptionSettings.positionX}
+					defaultValue={DEFAULT_AUTO_CAPTION_SETTINGS.positionX}
 					min={0}
-					max={30}
+					max={100}
 					step={1}
-					onChange={(value) => updateAutoCaptionSettings({ bottomOffset: value })}
+					onChange={(value) => updateAutoCaptionSettings({ positionX: value })}
+					formatValue={(value) => `${Math.round(value)}%`}
+					parseInput={(text) => parseFloat(text.replace(/%$/, ""))}
+				/>
+				<SliderControl
+					label={tSettings("captions.positionY", "Y position")}
+					value={autoCaptionSettings.positionY}
+					defaultValue={DEFAULT_AUTO_CAPTION_SETTINGS.positionY}
+					min={0}
+					max={100}
+					step={1}
+					onChange={(value) => updateAutoCaptionSettings({ positionY: value })}
 					formatValue={(value) => `${Math.round(value)}%`}
 					parseInput={(text) => parseFloat(text.replace(/%$/, ""))}
 				/>

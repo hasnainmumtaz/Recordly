@@ -5,6 +5,7 @@ import { buildActiveCaptionLayout } from "@/components/video-editor/captionLayou
 import {
 	CAPTION_FONT_WEIGHT,
 	CAPTION_LINE_HEIGHT,
+	getCaptionAnchorPosition,
 	getCaptionPadding,
 	getCaptionScaledFontSize,
 	getCaptionScaledRadius,
@@ -1626,9 +1627,12 @@ export class FrameRenderer {
 			this.config.width * (settings.maxWidth / 100) + padding.x * 2,
 			maxMeasuredWidth + padding.x * 2,
 		);
-		const centerX = this.config.width / 2;
-		const centerY =
-			this.config.height - (this.config.height * settings.bottomOffset) / 100 - boxHeight / 2;
+		const { x: centerX, y: centerY } = getCaptionAnchorPosition(
+			settings,
+			this.config.width,
+			this.config.height,
+			boxHeight,
+		);
 
 		return {
 			key: `${layout.blockKey}:${layout.visiblePageIndex}:${layout.activeWordIndex}`,
